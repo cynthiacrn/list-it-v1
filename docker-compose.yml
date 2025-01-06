@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: list_it
+      POSTGRES_PASSWORD: list_it
+      POSTGRES_DB: list_it_development
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

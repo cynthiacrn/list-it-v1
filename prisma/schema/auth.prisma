@@ -1,0 +1,62 @@
+model User {
+  id            String    @id @default(cuid()) @map("id")
+  email         String    @unique @map("email")
+  passwordHash  String    @map("password_hash")
+  emailVerified DateTime? @map("email_verified")
+
+  name  String? @map("name")
+  image String? @map("image")
+
+  accounts Account[]
+  sessions Session[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid()) @map("id")
+  userId            String  @map("user_id")
+  type              String  @map("type")
+  provider          String  @map("provider")
+  providerAccountId String  @map("provider_account_id")
+  refreshToken      String? @map("refresh_token")
+  accessToken       String? @map("access_token")
+  expiresAt         Int?    @map("expires_at")
+  tokenType         String? @map("token_type")
+  scope             String? @map("scope")
+  idToken           String? @map("id_token")
+  session_state     String? @map("session_state")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("user_id")
+  expires      DateTime @map("expires")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now()) @map("created_at")
+  updated_at DateTime @updatedAt @map("updated_at")
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String   @map("identifier")
+  token      String   @map("token")
+  expires    DateTime @map("expires")
+
+  @@id([identifier, token])
+  @@map("verification_tokens")
+}
