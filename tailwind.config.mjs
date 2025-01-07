@@ -8,8 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        transparent: 'transparent',
+        current: 'currentColor',
+        black: '#1F1F1F',
+        snow: '#FFFCFB',
+        seashell: '#FFF1EC',
+        'atomic-tangerine': '#FFA385',
+        mauve: '#EA90F4'
       },
     },
   },

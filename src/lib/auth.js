@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "@/lib/prisma"
 import { signInSchema } from "@/schemas/auth"
-import {comparePasswords, saltAndHashPassword} from "@/utils/password"
+import { comparePasswords } from "@/utils/password"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   debug: process.env.NODE_ENV === 'development',
@@ -23,7 +23,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           throw new Error("Invalid credentials")
         }
 
-        const isValid = comparePasswords(password, user.passwordHash)
+        const isValid = await comparePasswords(password, user.passwordHash)
         if (!isValid) {
           throw new Error("Invalid credentials")
         }
@@ -40,19 +40,26 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
+    authorized: async ({ auth }) => {
+      return !!auth
+    },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.email = user.email;
+        token.id = user.id
+        token.email = user.email
+        token.firstName = user.firstName
+        token.lastName = user.lastName
       }
-      return token;
+      return token
     },
     async session({ session, token }) {
       if (token) {
-        session.user.id = token.id;
-        session.user.email = token.email;
+        session.user.id = token.id
+        session.user.email = token.email
+        session.user.firstName = token.firstName
+        session.user.lastName = token.lastName
       }
-      return session;
+      return session
     },
   },
 })

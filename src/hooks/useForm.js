@@ -1,4 +1,4 @@
-import { useForm as useRHForm } from "react-hook-form";
+import { useForm as useRHForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 
 function getNestedValue(obj, path) {

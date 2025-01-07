@@ -1,12 +1,13 @@
 'use client'
 
 import React from 'react'
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 import { useForm } from '@/hooks/useForm'
 import FormControl from '@/components/forms/FormControl'
 import TextField from '@/components/forms/TextField'
 import Button from '@/components/forms/Button'
 import { signInSchema } from '@/schemas/auth'
+import Link from "next/link"
 
 export default function SignInForm({ onSubmit }) {
   const router = useRouter()
@@ -36,12 +37,20 @@ export default function SignInForm({ onSubmit }) {
         <FormControl required label="Password" error={form.getError("password")}>
           <TextField type="password" {...form.register("password")} />
         </FormControl>
+        <p className="text-xs text-atomic-tangerine">{form.getError("root.serverError")}</p>
       </div>
-
-      <p>{form.getError("root.serverError")}</p>
 
       <div className="flex flex-col items-center w-full">
         <Button type="submit">Login</Button>
+        <div className="flex flex-row py-3 px-4 justify-center w-full gap-1">
+          Don't have an account?
+          <Link
+            href="/account/sign_up"
+            className="text-mauve underline"
+          >
+            Register here.
+          </Link>
+        </div>
       </div>
     </form>
   )

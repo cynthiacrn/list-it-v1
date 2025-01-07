@@ -1,4 +1,4 @@
-import { ZodError } from "zod";
+import { ZodError } from "zod"
 
 function createErrorResponse(code, message, details = {}, statusCode = 400) {
   return {
@@ -7,21 +7,21 @@ function createErrorResponse(code, message, details = {}, statusCode = 400) {
     details,
     statusCode,
     timestamp: new Date().toISOString(),
-  };
+  }
 }
 
 export function formatZodErrors(error) {
   const details = error.errors.reduce((acc, err) => {
-    acc[err.path[0]] = err.message;
-    return acc;
-  }, {});
+    acc[err.path[0]] = err.message
+    return acc
+  }, {})
 
   return createErrorResponse(
     "validation_error",
     "Validation failed",
     details,
     422
-  );
+  )
 }
 
 export function formatCustomErrors(error) {
@@ -30,7 +30,7 @@ export function formatCustomErrors(error) {
     error.message || "An unknown error occurred",
     {},
     500
-  );
+  )
 }
 
 export function formatUnexpectedError() {
@@ -39,17 +39,17 @@ export function formatUnexpectedError() {
     "An unexpected error occurred",
     {},
     500
-  );
+  )
 }
 
 export function formatErrors(error) {
   if (error instanceof ZodError) {
-    return formatZodErrors(error);
+    return formatZodErrors(error)
   }
 
   if (error instanceof Error) {
-    return formatCustomErrors(error);
+    return formatCustomErrors(error)
   }
 
-  return formatUnexpectedError();
+  return formatUnexpectedError()
 }
