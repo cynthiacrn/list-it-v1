@@ -6,6 +6,7 @@ enum Visibility {
 model List {
   id          String     @id @default(cuid()) @map("id")
   name        String     @map("name")
+  slug        String     @unique @map("slug")
   description String?    @map("description")
   visibility  Visibility @default(PRIVATE)
   userId      String     @map("user_id")
