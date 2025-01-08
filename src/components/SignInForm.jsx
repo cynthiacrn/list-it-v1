@@ -19,7 +19,7 @@ export default function SignInForm({ onSubmit }) {
   async function handleSubmit(formValues) {
     try {
       await onSubmit?.(formValues)
-      router.push("/")
+      router.push("/wishlists")
     } catch (error) {
       form.setError('root.serverError', {
         message: "Invalid credentials",

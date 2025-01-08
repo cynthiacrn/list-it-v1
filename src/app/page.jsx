@@ -1,5 +1,5 @@
-import { auth } from "@/lib/auth"
-import { signOut } from "@/actions/signOut"
+import { auth } from '@/lib/auth'
+import { signOut } from '@/actions/signOut'
 
 export default async function Home() {
   const session = await auth()

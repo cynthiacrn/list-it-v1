@@ -1,0 +1,32 @@
+enum Visibility {
+  PUBLIC
+  PRIVATE
+}
+
+model List {
+  id          String     @id @default(cuid()) @map("id")
+  name        String     @map("name")
+  description String?    @map("description")
+  visibility  Visibility @default(PRIVATE)
+  userId      String     @map("user_id")
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  addresses   Address?   @relation(fields: [addressId], references: [id])
+  listItems   ListItem[]
+  createdAt   DateTime   @default(now()) @map("created_at")
+  updatedAt   DateTime   @updatedAt @map("updated_at")
+  addressId   String?
+
+  @@map("lists")
+}
+
+model ListItem {
+  id          String   @id @default(cuid()) @map("id")
+  name        String   @map("name")
+  description String?  @map("description")
+  listId      String   @map("list_id")
+  list        List     @relation(fields: [listId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("list_items")
+}

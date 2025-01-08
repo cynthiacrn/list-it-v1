@@ -7,6 +7,7 @@ import FormControl from '@/components/forms/FormControl'
 import TextField from '@/components/forms/TextField'
 import Button from '@/components/forms/Button'
 import { signUpSchema } from '@/schemas/auth'
+import Link from "next/link";
 
 export default function SignUpForm({ onSubmit }) {
   const router = useRouter()
@@ -18,7 +19,7 @@ export default function SignUpForm({ onSubmit }) {
   async function handleSubmit(formValues) {
     try {
       await onSubmit?.(formValues)
-      router.push("/")
+      router.push("/wishlists")
     } catch (error) {
       console.log(error)
     }
@@ -46,6 +47,15 @@ export default function SignUpForm({ onSubmit }) {
 
       <div className="flex flex-col items-center w-full">
         <Button type="submit">Register</Button>
+        <div className="flex flex-row py-3 px-4 justify-center w-full gap-1">
+          Already have an account?
+          <Link
+            href="/account/sign_in"
+            className="text-mauve underline"
+          >
+            Login here.
+          </Link>
+        </div>
       </div>
     </form>
   )
