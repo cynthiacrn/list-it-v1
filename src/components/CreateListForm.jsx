@@ -14,11 +14,6 @@ export default function CreateListForm({ onSubmit }) {
   const form = useForm({
     schema: createListSchema,
     onSubmit: handleSubmit,
-    defaultValues: {
-      name: "",
-      description: "",
-      isPrivate: false,
-    }
   })
 
   async function handleSubmit(formValues) {

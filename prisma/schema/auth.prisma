@@ -4,8 +4,8 @@ model User {
   passwordHash  String    @map("password_hash")
   emailVerified DateTime? @map("email_verified")
 
-  firstName String? @map("first_name")
-  lastName  String? @map("last_name")
+  firstName String  @map("first_name")
+  lastName  String  @map("last_name")
   image     String? @map("image")
 
   accounts Account[]

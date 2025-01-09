@@ -5,8 +5,10 @@ import { prisma } from "@/lib/prisma"
 import { signInSchema } from "@/schemas/auth"
 import { comparePasswords } from "@/utils/password"
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  debug: process.env.NODE_ENV === 'development',
+  debug: !isProduction,
   secret: process.env.AUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -32,10 +34,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
-  pages: {
-    signIn: '/account/sign_in',
-    newUser: '/account/sign_up'
-  },
   session: {
     strategy: "jwt",
   },

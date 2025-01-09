@@ -18,21 +18,26 @@ export default function SignUpForm({ onSubmit }) {
 
   async function handleSubmit(formValues) {
     try {
-      await onSubmit?.(formValues)
+      const res = await onSubmit?.(formValues)
+      if (res.code === "server_error") {
+        throw new Error()
+      }
       router.push("/wishlists")
     } catch (error) {
-      console.log(error)
+      form.setError('root.serverError', {
+        message: "Something went wrong!",
+      })
     }
   }
 
   return (
     <form onSubmit={form.handleSubmit} className="flex flex-col gap-12 items-start text-sm min-w-[400px]">
       <div className="flex flex-col gap-4 items-start text-sm w-full">
-        <FormControl label="First Name" error={form.getError("firstName")}>
+        <FormControl required label="First Name" error={form.getError("firstName")}>
           <TextField type="text" {...form.register("firstName")} />
         </FormControl>
 
-        <FormControl label="Last Name" error={form.getError("lastName")}>
+        <FormControl required label="Last Name" error={form.getError("lastName")}>
           <TextField type="text" {...form.register("lastName")} />
         </FormControl>
 
@@ -43,6 +48,8 @@ export default function SignUpForm({ onSubmit }) {
         <FormControl required label="Password" error={form.getError("password")}>
           <TextField type="password" {...form.register("password")} />
         </FormControl>
+
+        <p className="text-xs text-atomic-tangerine">{form.getError("root.serverError")}</p>
       </div>
 
       <div className="flex flex-col items-center w-full">

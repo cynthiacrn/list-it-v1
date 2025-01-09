@@ -2,9 +2,9 @@
 
 import { saltAndHashPassword } from '@/utils/password'
 import { formatErrors } from '@/utils/errors'
-import { credentialSignIn } from '@/actions/signIn'
+import { credentialSignIn } from '@/actions/auth/signIn'
 
-export async function credentialSignUp({ email, password }) {
+export async function credentialSignUp({ firstName, lastName, email, password }) {
   try {
     const user = await prisma.user.findUnique({ where: { email } })
     if (user) {
@@ -15,6 +15,8 @@ export async function credentialSignUp({ email, password }) {
     await prisma.user.create({
       data: {
         email,
+        lastName,
+        firstName,
         passwordHash,
       },
     })

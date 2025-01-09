@@ -37,6 +37,7 @@ export default function SignInForm({ onSubmit }) {
         <FormControl required label="Password" error={form.getError("password")}>
           <TextField type="password" {...form.register("password")} />
         </FormControl>
+
         <p className="text-xs text-atomic-tangerine">{form.getError("root.serverError")}</p>
       </div>
 

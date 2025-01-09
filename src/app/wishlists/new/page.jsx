@@ -1,5 +1,5 @@
 import CreateListForm from "@/components/CreateListForm";
-import { createList } from "@/actions/createList";
+import { createList } from "@/actions/lists/createList";
 
 export default async function NewWishlistPage() {
   return (

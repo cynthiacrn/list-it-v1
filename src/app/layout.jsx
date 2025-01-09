@@ -1,4 +1,3 @@
-import { GeistSans } from 'geist/font/sans'
 import { Montserrat } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/lib/auth'

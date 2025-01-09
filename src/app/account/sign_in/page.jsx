@@ -1,4 +1,4 @@
-import { credentialSignIn } from '@/actions/signIn'
+import { credentialSignIn } from '@/actions/auth/signIn'
 import SignInForm from '@/components/SignInForm'
 
 export default function SignInPage() {

@@ -11,6 +11,10 @@ export function useForm({ schema, onSubmit, ...rest }) {
     throw new Error("useForm: Missing schema")
   }
 
+  if (!onSubmit) {
+    throw new Error("useForm: Missing onSubmit")
+  }
+
   const form = useRHForm({
     mode: "onBlur",
     ...rest,
@@ -24,14 +28,12 @@ export function useForm({ schema, onSubmit, ...rest }) {
     return fieldError?.message
   }
 
-  const handleSubmit = onSubmit
-    ? form.handleSubmit(onSubmit)
-    : form.handleSubmit(() => {})
+  const handleSubmit = form.handleSubmit(onSubmit)
 
   return {
     ...form,
     hasErrors,
     getError,
-    handleSubmit
+    handleSubmit,
   }
 }
