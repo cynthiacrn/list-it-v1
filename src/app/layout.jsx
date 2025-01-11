@@ -1,8 +1,8 @@
 import { Montserrat } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/lib/auth'
-import './globals.css'
 import Header from "@/components/Header";
+import '@/styles/globals.css'
 
 export const metadata = {
   title: "List it",
@@ -20,12 +20,12 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.className} bg-seashell text-black`}
-      >
+      <body className={`${montserrat.className} bg-seashell text-black`}>
         <SessionProvider session={session}>
           <Header />
-          {children}
+          <main className="min-h-screen pt-[117px]">
+            {children}
+          </main>
         </SessionProvider>
       </body>
     </html>

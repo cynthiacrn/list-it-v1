@@ -1,0 +1,11 @@
+.button {
+  @apply cursor-pointer text-sm rounded-full hover:text-black py-1.5 px-3 w-fit whitespace-nowrap;
+}
+
+.button.button-filled {
+  @apply border border-transparent bg-black hover:bg-atomic-tangerine text-snow hover:text-black transition duration-300 ease-in-out;
+}
+
+.button.button-outlined {
+  @apply border border-black hover:border-atomic-tangerine hover:text-atomic-tangerine transition duration-300 ease-in-out;
+}

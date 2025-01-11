@@ -24,10 +24,10 @@ export default function ListsHeader({ user, listItemCount, publicListCount, priv
         )}
       </div>
       <div className="flex flex-row gap-4">
-        <Link href="/wishlists/new" className="cursor-pointer text-sm bg-black rounded-full hover:bg-atomic-tangerine text-snow hover:text-black py-1.5 px-3 w-full transition duration-300 ease-in-out whitespace-nowrap">
+        <Link href="/wishlists/new" className="button button-filled">
           Create list
         </Link>
-        <Link href="/profile" className="cursor-pointer text-sm border border-black rounded-full hover:border-atomic-tangerine hover:text-atomic-tangerine py-1.5 px-3 w-full transition duration-300 ease-in-out whitespace-nowrap">
+        <Link href="/profile" className="button button-outlined">
           Update profile
         </Link>
       </div>

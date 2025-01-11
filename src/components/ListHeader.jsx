@@ -13,10 +13,10 @@ export default function ListHeader({ user, wishlist }) {
       <div className="text-2xl font-semibold">{wishlist.name}</div>
 
       <div className="flex flex-row gap-4">
-        <Link href="/wishlists/new" className="cursor-pointer text-sm bg-black rounded-full hover:bg-atomic-tangerine text-snow hover:text-black py-1.5 px-3 w-full transition duration-300 ease-in-out whitespace-nowrap">
+        <Link href="/wishlists/new" className="button button-filled">
           Update list
         </Link>
-        <Link href="/profile" className="cursor-pointer text-sm border border-black rounded-full hover:border-atomic-tangerine hover:text-atomic-tangerine py-1.5 px-3 w-full transition duration-300 ease-in-out whitespace-nowrap">
+        <Link href="/profile" className="button button-outlined">
           Share list
         </Link>
         <Link href="/profile" className="cursor-pointer text-sm hover:text-atomic-tangerine py-1.5 w-full transition duration-300 ease-in-out whitespace-nowrap">
