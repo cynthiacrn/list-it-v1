@@ -10,6 +10,7 @@ import coverImage4 from '../../public/images/image-4.jpg'
 import coverImage5 from '../../public/images/image-5.jpg'
 import coverImage6 from '../../public/images/image-6.jpg'
 import Link from 'next/link'
+import WishCard from "@/components/WishCard";
 
 const coverImages = [coverImage1, coverImage2, coverImage3, coverImage4, coverImage5, coverImage6]
 
@@ -41,19 +42,7 @@ export default function ListItemsTileGrid({ wishlistSlug, listItems }) {
         {listItems.map((listItem) => (
           <Measure key={listItem.id}>
             {({ measureRef }) => (
-              <div ref={measureRef} className="flex flex-col gap-2">
-                <Image
-                  src={getRandomImage()}
-                  priority={true}
-                  alt="List's cover"
-                  width={280}
-                  className="object-cover rounded-lg w-full max-h-[390px]"
-                />
-                <div className="flex flex-col gap-1">
-                  {listItem.name && (<div>{listItem.name}</div>)}
-                  {listItem.price && (<div className="text-sm font-medium">{listItem.price}€</div>)}
-                </div>
-              </div>
+              <WishCard ref={measureRef} wish={{ ...listItem, imageUrl: getRandomImage() }} onDelete={console.log} />
             )}
           </Measure>
         ))}
