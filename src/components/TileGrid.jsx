@@ -27,15 +27,20 @@ export default function ListItemsTileGrid({ wishlistSlug, listItems }) {
             <Link
               ref={measureRef}
               href={`/wishlists/${wishlistSlug}/items/new`}
-              className="flex flex-col gap-2"
+              className="relative flex flex-col gap-2 cursor-pointer group"
             >
-              <div className="w-full h-[350px] rounded-lg bg-atomic-tangerine flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1"
-                     stroke="currentColor" className="size-12">
-                  <path classnamee-linecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                </svg>
-              </div>
-              <p className="mt-2">Add a wish</p>
+                <div className="relative overflow-hidden w-full h-[350px] rounded-lg bg-atomic-tangerine flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+
+                  <div className="transition-transform duration-300 group-hover:scale-105 group-hover:text-snow">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1"
+                         stroke="currentColor" className="size-12">
+                      <path classnamee-linecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                    </svg>
+                  </div>
+
+                </div>
+                <div>Add a wish</div>
             </Link>
           )}
         </Measure>

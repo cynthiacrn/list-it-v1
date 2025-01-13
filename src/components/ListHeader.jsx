@@ -24,6 +24,5 @@ export default function ListHeader({ user, wishlist }) {
         </Link>
       </div>
     </div>
-
   )
 }

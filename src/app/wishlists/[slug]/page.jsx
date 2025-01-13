@@ -51,7 +51,7 @@ export default async function WishlistPage({ params }) {
 
         <TileGrid wishlistSlug={slug} listItems={wishlist.listItems} />
       </div>
-      <div className="gap-4 sticky bottom-0 left-0 right-0 flex flex-row justify-center bg-seashell items-center px-24 pt-4 pb-6">
+      <div className="gap-4 sticky bottom-0 left-0 right-0 flex flex-row justify-center bg-seashell/25 backdrop-blur-md items-center px-24 pt-4 pb-6">
         <Link href={`/wishlists/${slug}/items/new`} className="button button-filled">
           Add a wish
         </Link>
