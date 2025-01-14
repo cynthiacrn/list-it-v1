@@ -1,11 +1,19 @@
-import CreateListForm from "@/components/CreateListForm";
+import { redirect } from "next/navigation";
 import { createList } from "@/actions/lists/createList";
+import ListForm from "@/components/forms/ListForm";
+import FormLayout from "@/components/forms/shared/FormLayout";
 
 export default async function NewWishlistPage() {
+
+  const handleCreateList = async (formValues) => {
+    "use server"
+    const list = await createList(formValues)
+    redirect(`/wishlists/${list.slug}`)
+  }
+
   return (
-    <div>
-      <h1>Create New Wishlist</h1>
-      <CreateListForm onSubmit={createList} />
-    </div>
-  );
+    <FormLayout title="New Wishlist">
+      <ListForm onSubmit={handleCreateList} />
+    </FormLayout>
+  )
 }

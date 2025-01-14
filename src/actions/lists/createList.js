@@ -10,7 +10,7 @@ export async function createList({ name, description, visibility }) {
     throw new Error("User not authenticated")
   }
 
-  await prisma.list.create({
+  return prisma.list.create({
     data: {
       name,
       slug: slugify(name, { lower: true, strict: true }),

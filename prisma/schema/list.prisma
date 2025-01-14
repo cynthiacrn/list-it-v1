@@ -22,6 +22,7 @@ model List {
 
 model ListItem {
   id          String   @id @default(cuid()) @map("id")
+  slug        String   @unique @map("slug")
   url         String   @map("url")
   name        String   @map("name")
   description String?  @map("description")

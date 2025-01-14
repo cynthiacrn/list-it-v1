@@ -3,22 +3,22 @@
 import React from 'react'
 import { useRouter } from "next/navigation"
 import { useForm } from '@/hooks/useForm'
-import FormControl from '@/components/forms/FormControl'
-import TextField from '@/components/forms/TextField'
-import Button from '@/components/forms/Button'
+import FormControl from '@/components/forms/shared/FormControl'
+import TextField from '@/components/forms/fields/TextField'
+import Button from '@/components/shared/Button'
 import { createListItemSchema } from "@/schemas/list";
 
-export default function CreateListItemForm({ listSlug, onSubmit }) {
+export default function ListItemForm({ defaultValues = {}, onSubmit }) {
   const router = useRouter()
   const form = useForm({
     schema: createListItemSchema,
     onSubmit: handleSubmit,
+    defaultValues,
   })
 
   async function handleSubmit(formValues) {
     try {
-      await onSubmit?.({ listSlug, ...formValues })
-      router.push(`/wishlists/${listSlug}`)
+      await onSubmit?.(formValues)
     } catch (error) {
       form.setError('root.serverError', {
         message: "Failed to create wishlist",
@@ -42,7 +42,10 @@ export default function CreateListItemForm({ listSlug, onSubmit }) {
         </FormControl>
 
         <FormControl label="Product's price" error={form.getError("price")}>
-          <TextField type="number" placeholder="Ex: 29.79$" {...form.register("price", { valueAsNumber: true })} />
+          <TextField type="number" step='0.01' placeholder="Ex: 29.79$" {...form.register("price", {
+            valueAsNumber: true,
+            setValueAs: (value) => parseFloat(value).toFixed(2) || null,
+          })} />
         </FormControl>
 
         <p className="text-xs text-atomic-tangerine">{form.getError("root.serverError")}</p>

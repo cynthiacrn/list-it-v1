@@ -3,9 +3,9 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from '@/hooks/useForm'
-import FormControl from '@/components/forms/FormControl'
-import TextField from '@/components/forms/TextField'
-import Button from '@/components/forms/Button'
+import FormControl from '@/components/forms/shared/FormControl'
+import TextField from '@/components/forms/fields/TextField'
+import Button from '@/components/shared/Button'
 import { signUpSchema } from '@/schemas/auth'
 import Link from "next/link";
 

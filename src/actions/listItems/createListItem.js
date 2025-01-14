@@ -1,9 +1,9 @@
 "use server"
 
 import { auth } from "@/lib/auth"
-import slugify from "slugify"
+import slugify from "slugify";
 
-export async function updateList({ slug, name, description, visibility }) {
+export async function createListItem({ listSlug, url, name, description, price }) {
   const session = await auth()
 
   if (!session || !session.user) {
@@ -11,20 +11,21 @@ export async function updateList({ slug, name, description, visibility }) {
   }
 
   const list = await prisma.list.findUnique({
-    where: { slug, userId: session.user.id },
+    where: { slug: listSlug, userId: session.user.id },
   })
 
   if (!list) {
     throw new Error("List not found")
   }
 
-  return prisma.list.update({
-    where: { id: list.id },
+  return prisma.listItem.create({
     data: {
+      listId: list.id,
+      slug: slugify(name, { lower: true, strict: true }),
+      url,
       name,
-      slug: slugify(name || list.slug, { lower: true, strict: true }),
       description,
-      visibility,
+      price,
     },
   })
 }

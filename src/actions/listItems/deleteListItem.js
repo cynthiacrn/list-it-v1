@@ -2,7 +2,7 @@
 
 import { auth } from "@/lib/auth"
 
-export async function createListItem({ listSlug, url, name, description, price }) {
+export async function deleteListItem({ listSlug, itemSlug }) {
   const session = await auth()
 
   if (!session || !session.user) {
@@ -17,13 +17,15 @@ export async function createListItem({ listSlug, url, name, description, price }
     throw new Error("List not found")
   }
 
-  await prisma.listItem.create({
-    data: {
-      listId: list.id,
-      url,
-      name,
-      description,
-      price,
-    },
+  const listItem = await prisma.listItem.findUnique({
+    where: { slug: itemSlug, listId: list.id },
+  })
+
+  if (!listItem) {
+    throw new Error("List item not found")
+  }
+
+  return prisma.listItem.delete({
+    where: { id: listItem.id },
   })
 }

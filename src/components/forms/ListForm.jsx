@@ -3,17 +3,18 @@
 import React from 'react'
 import { useRouter } from "next/navigation"
 import { useForm } from '@/hooks/useForm'
-import FormControl from '@/components/forms/FormControl'
-import TextField from '@/components/forms/TextField'
-import SwitchField from '@/components/forms/SwitchField'
-import Button from '@/components/forms/Button'
+import FormControl from '@/components/forms/shared/FormControl'
+import TextField from '@/components/forms/fields/TextField'
+import SwitchField from '@/components/forms/fields/SwitchField'
+import Button from '@/components/shared/Button'
 import { createListSchema } from "@/schemas/list";
 
-export default function CreateListForm({ onSubmit }) {
+export default function ListForm({ defaultValues = {}, onSubmit }) {
   const router = useRouter()
   const form = useForm({
     schema: createListSchema,
     onSubmit: handleSubmit,
+    defaultValues,
   })
 
   async function handleSubmit(formValues) {
@@ -22,7 +23,6 @@ export default function CreateListForm({ onSubmit }) {
         ...formValues,
         visibility: formValues.isPrivate ? "PRIVATE" : "PUBLIC"
       })
-      router.push("/wishlists")
     } catch (error) {
       form.setError('root.serverError', {
         message: "Failed to create wishlist",

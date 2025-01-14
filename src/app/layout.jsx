@@ -1,7 +1,7 @@
 import { Montserrat } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 import { auth } from '@/lib/auth'
-import Header from "@/components/Header";
+import Header from "@/components/layouts/Header";
 import '@/styles/globals.css'
 
 export const metadata = {

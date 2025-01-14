@@ -1,6 +1,6 @@
 import { credentialSignIn } from '@/actions/auth/signIn'
-import SignInForm from '@/components/SignInForm'
-import FormLayout from "@/components/forms/FormLayout";
+import SignInForm from '@/components/forms/SignInForm'
+import FormLayout from "@/components/forms/shared/FormLayout";
 
 export default function SignInPage() {
   return (

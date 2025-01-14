@@ -1,22 +1,30 @@
 "use client"
 
-import Image from 'next/image'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import Measure from 'react-measure'
-import coverImage1 from '../../public/images/image-1.jpg'
-import coverImage2 from '../../public/images/image-2.jpg'
-import coverImage3 from '../../public/images/image-3.jpg'
-import coverImage4 from '../../public/images/image-4.jpg'
-import coverImage5 from '../../public/images/image-5.jpg'
-import coverImage6 from '../../public/images/image-6.jpg'
+import coverImage1 from '../../../public/images/image-1.jpg'
+import coverImage2 from '../../../public/images/image-2.jpg'
+import coverImage3 from '../../../public/images/image-3.jpg'
+import coverImage4 from '../../../public/images/image-4.jpg'
+import coverImage5 from '../../../public/images/image-5.jpg'
+import coverImage6 from '../../../public/images/image-6.jpg'
 import Link from 'next/link'
-import WishCard from "@/components/WishCard";
+import WishCard from '@/components/cards/WishCard'
+import { deleteListItem } from "@/actions/listItems/deleteListItem";
+import { useRouter } from "next/navigation";
 
 const coverImages = [coverImage1, coverImage2, coverImage3, coverImage4, coverImage5, coverImage6]
 
-export default function ListItemsTileGrid({ wishlistSlug, listItems }) {
+export default function ListItemsTileGrid({ listSlug, listItems }) {
+  const router = useRouter()
+
   function getRandomImage() {
     return coverImages[Math.floor(Math.random() * coverImages.length)]
+  }
+
+  const handleDelete = async (itemSlug) => {
+    await deleteListItem({ listSlug, itemSlug })
+    router.push(`/wishlists/${listSlug}`, { scroll: false })
   }
 
   return (
@@ -26,7 +34,7 @@ export default function ListItemsTileGrid({ wishlistSlug, listItems }) {
           {({ measureRef }) => (
             <Link
               ref={measureRef}
-              href={`/wishlists/${wishlistSlug}/items/new`}
+              href={`/wishlists/${listSlug}/items/new`}
               className="relative flex flex-col gap-2 cursor-pointer group"
             >
                 <div className="relative overflow-hidden w-full h-[350px] rounded-lg bg-atomic-tangerine flex items-center justify-center">
@@ -35,7 +43,7 @@ export default function ListItemsTileGrid({ wishlistSlug, listItems }) {
                   <div className="transition-transform duration-300 group-hover:scale-105 group-hover:text-snow">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1"
                          stroke="currentColor" className="size-12">
-                      <path classnamee-linecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+                      <path strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
                     </svg>
                   </div>
 
@@ -47,7 +55,7 @@ export default function ListItemsTileGrid({ wishlistSlug, listItems }) {
         {listItems.map((listItem) => (
           <Measure key={listItem.id}>
             {({ measureRef }) => (
-              <WishCard ref={measureRef} wish={{ ...listItem, imageUrl: getRandomImage() }} onDelete={console.log} />
+              <WishCard ref={measureRef} wish={{ ...listItem, listSlug, imageUrl: getRandomImage() }} onDelete={handleDelete} />
             )}
           </Measure>
         ))}
