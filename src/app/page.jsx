@@ -6,7 +6,6 @@ export default async function Home() {
 
   return (
     <>
-      {session && <h1>Welcome {session.user.email}</h1>}
       {session && (
         <form action={signOut}>
           <button type="submit">Sign out</button>
