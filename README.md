@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wishlist Application in Next.js with NextAuth, Prisma, and TailwindCSS
+
+## Description
+This is a wishlist application built using [Next.js](https://nextjs.org/), [NextAuth](https://next-auth.js.org/), [Prisma](https://www.prisma.io/), and [TailwindCSS](https://tailwindcss.com/). It features a fully functional CRUD system for managing wishlists. The project is still under development, but I'm excited to share the progress so far.
+
+While the core functionality is in place, the design, responsiveness, and navigation are still being refined. Upcoming features will make the application even more robust and user-friendly.
+
+---
+
+## Prerequisites
+Before starting, ensure you have the following:
+
+- Node.js (>= 14.x recommended)
+- PostgreSQL (for the database)
+- A package manager like npm or yarn
+
+---
 
 ## Getting Started
 
@@ -16,21 +32,104 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.jsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone <REPO_URL>
+   cd <PROJECT_NAME>
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Deploy on Vercel
+3. Set up environment variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Create a `.env.local` file in the root of the project and add the necessary keys. Example:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```env
+   AUTH_SECRET="YOUR_SECRET_KEY"
+   DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<database_name>"
+   ```
+
+   **Note:** You must generate your own values for `AUTH_SECRET` and properly configure `DATABASE_URL` for your environment.
+
+4. Initialize the Prisma database:
+
+   ```bash
+   npx prisma migrate dev
+   ```
+
+---
+
+## Features
+
+- **CRUD Operations**: Fully functional create, read, update, and delete operations for wishlists.
+- **Authentication**: Secure authentication using NextAuth.
+- **Planned Enhancements**:
+    - Collaboration: Share a wishlist with another user to collaborate in real-time.
+    - Media Integration: Add photos to your wishlist items.
+    - Sharing and Access Control: Public and private lists with unique access for shared users.
+    - Improved Navigation: Enhanced user experience with refined navigation.
+    - Responsive Design: A mobile-friendly interface.
+    - Testing: Add robust tests to ensure stability and reliability.
+
+---
+
+## Available Scripts
+
+- `npm run dev` : Starts the development server.
+- `npm run build` : Builds the application for production.
+- `npm start` : Starts the server in production mode.
+- `npx prisma migrate dev` : Synchronizes Prisma migrations.
+- `npx prisma studio` : Opens Prisma Studio to explore the database.
+
+---
+
+## Deployment
+
+To deploy the application, follow these steps:
+
+1. Build the production version:
+
+   ```bash
+   npm run build
+   ```
+
+2. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+3. Ensure the necessary environment variables are configured on your deployment platform (e.g., Vercel, AWS).
+
+---
+
+## Development Status
+
+This project is still in progress. The next development steps include:
+
+1. Adding collaboration features for shared wishlists.
+2. Implementing photo uploads for wishlist items.
+3. Improving navigation and overall user experience.
+4. Creating public and private lists with specific access controls.
+5. Enhancing the design for better responsiveness.
+6. Adding tests for stability and reliability.
+
+Feedback and suggestions are welcome. Feel free to reach out or open an issue on GitHub to discuss the current implementation or ideas for improvement.
+
+---
+
+## License
+
+This project is licensed under the MIT License. You are free to use, modify, and distribute it.
+
