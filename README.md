@@ -131,6 +131,8 @@ This project is still in progress. The next development steps include:
 4. Creating public and private lists with specific access controls.
 5. Enhancing the design for better responsiveness.
 6. Adding tests for stability and reliability.
+7. Adding scrapping feature from product url
+8. Migrating project to Typescript
 
 Feedback and suggestions are welcome. Feel free to reach out or open an issue on GitHub to discuss the current implementation or ideas for improvement.
 
