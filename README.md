@@ -63,10 +63,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
    ```env
    AUTH_SECRET="NfT6xuPrpD/1lbsIby6kfyfTyycSCz7oLneK3vc3M8U="
-   POSTGRES_USER="list_it"
-   POSTGRES_PASSWORD="list_it"
-   POSTGRES_DB="list_it"
-   DATABASE_URL="postgresql://list_it:list_it@localhost:5432/list_it"
+   DATABASE_URL="postgresql://list_it:list_it@localhost:5432/list_it_development"
    ```
 
 5. Initialize the Prisma database:
