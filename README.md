@@ -39,8 +39,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 1. Clone the repository:
 
    ```bash
-   git clone <REPO_URL>
-   cd <PROJECT_NAME>
+   git clone git@github.com:cynthiacrn/list-it-v1.git
+   cd list-it-v1
    ```
 
 2. Start database container:
