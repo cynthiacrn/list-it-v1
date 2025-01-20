@@ -43,7 +43,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
    cd <PROJECT_NAME>
    ```
 
-2. Install dependencies:
+2. Start database container:
+
+   ```bash
+   docker compose up -d
+   ```
+
+3. Install dependencies:
 
    ```bash
    npm install
@@ -51,18 +57,19 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
    yarn install
    ```
 
-3. Set up environment variables:
+4. Set up environment variables:
 
-   Create a `.env.local` file in the root of the project and add the necessary keys. Example:
+   Create a `.env` file in the root of the project and add the necessary keys. Example:
 
    ```env
-   AUTH_SECRET="YOUR_SECRET_KEY"
-   DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<database_name>"
+   AUTH_SECRET="NfT6xuPrpD/1lbsIby6kfyfTyycSCz7oLneK3vc3M8U="
+   POSTGRES_USER="list_it"
+   POSTGRES_PASSWORD="list_it"
+   POSTGRES_DB="list_it"
+   DATABASE_URL="postgresql://list_it:list_it@localhost:5432/list_it"
    ```
 
-   **Note:** You must generate your own values for `AUTH_SECRET` and properly configure `DATABASE_URL` for your environment.
-
-4. Initialize the Prisma database:
+5. Initialize the Prisma database:
 
    ```bash
    npx prisma migrate dev
