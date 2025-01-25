@@ -19,7 +19,7 @@ export default async function EditWishlistItemPage({ params }) {
 
   return (
     <FormLayout title="Edit List">
-      <ListForm defaultValues={list} onSubmit={handleUpdateList} />
+      <ListForm defaultValues={list} onSubmit={handleUpdateList} buttonAction="Update" />
     </FormLayout>
   )
 }

@@ -13,7 +13,7 @@ export default async function NewWishlistPage() {
 
   return (
     <FormLayout title="New Wishlist">
-      <ListForm onSubmit={handleCreateList} />
+      <ListForm onSubmit={handleCreateList} buttonAction="Create"/>
     </FormLayout>
   )
 }

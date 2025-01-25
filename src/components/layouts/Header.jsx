@@ -3,6 +3,7 @@
 import Avatar, { genConfig } from 'react-nice-avatar'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { signOut } from '@/actions/auth/signOut'
 
 export default function Header() {
   const { data: session, status } = useSession()
@@ -25,6 +26,7 @@ export default function Header() {
             <Link href="/wishlists/new" className="uppercase text-xs">
               create
             </Link>
+            <button onClick={signOut} className="uppercase text-xs" type="submit">Sign out</button>
             <Link href="/profile">
               <Avatar className="h-12 w-12" {...genConfig(session.user.email) } />
             </Link>

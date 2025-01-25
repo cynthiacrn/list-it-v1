@@ -1,9 +1,9 @@
 "use client";
 
-import { forwardRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { forwardRef } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default forwardRef(({ wish, onDelete }, ref) => {
   const router = useRouter()

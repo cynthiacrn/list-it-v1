@@ -3,8 +3,8 @@ import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
 import { auth } from '@/lib/auth'
 import ListHeader from '@/components/layouts/ListHeader'
-import ListItemsTileGrid from "@/components/layouts/ListItemsTileGrid";
-import { deleteList } from "@/actions/lists/deleteList";
+import ListItemsTileGrid from '@/components/layouts/ListItemsTileGrid'
+import { deleteList } from '@/actions/lists/deleteList'
 
 export default async function WishlistPage({ params }) {
   const session = await auth()
@@ -54,7 +54,7 @@ export default async function WishlistPage({ params }) {
 
         <ListItemsTileGrid listSlug={listSlug} listItems={list.listItems} />
       </div>
-      <div className="gap-4 sticky bottom-0 left-0 right-0 flex flex-row justify-center bg-seashell/25 backdrop-blur-md items-center px-24 pt-4 pb-6">
+      <div className="gap-4 sticky bottom-0 left-0 right-0 flex flex-row justify-center bg-seashell/25 backdrop-blur-sm items-center px-24 py-4">
         <Link href={`/wishlists/${listSlug}/items/new`} className="button button-filled">
           Add a wish
         </Link>

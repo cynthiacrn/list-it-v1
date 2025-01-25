@@ -9,7 +9,7 @@ import SwitchField from '@/components/forms/fields/SwitchField'
 import Button from '@/components/shared/Button'
 import { createListSchema } from "@/schemas/list";
 
-export default function ListForm({ defaultValues = {}, onSubmit }) {
+export default function ListForm({ defaultValues = {}, onSubmit , buttonAction}) {
   const router = useRouter()
   const form = useForm({
     schema: createListSchema,
@@ -49,7 +49,7 @@ export default function ListForm({ defaultValues = {}, onSubmit }) {
       </div>
 
       <div className="flex flex-col items-center w-full">
-        <Button type="submit">Create</Button>
+        <Button type="submit">{buttonAction}</Button>
       </div>
     </form>
   )
