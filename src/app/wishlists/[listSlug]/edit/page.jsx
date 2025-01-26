@@ -1,8 +1,8 @@
 import FormLayout from '@/components/forms/shared/FormLayout'
 import { redirect } from 'next/navigation'
-import { prisma } from "@/lib/prisma";
-import {updateList} from "@/actions/lists/updateList";
-import ListForm from "@/components/forms/ListForm";
+import { prisma } from '@/lib/prisma'
+import {updateList} from '@/actions/lists/updateList'
+import ListForm from '@/components/forms/ListForm'
 
 export default async function EditWishlistItemPage({ params }) {
   const { listSlug } = await params

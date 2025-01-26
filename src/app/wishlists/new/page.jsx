@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
-import { createList } from "@/actions/lists/createList";
-import ListForm from "@/components/forms/ListForm";
-import FormLayout from "@/components/forms/shared/FormLayout";
+import { redirect } from 'next/navigation'
+import { createList } from '@/actions/lists/createList'
+import ListForm from '@/components/forms/ListForm'
+import FormLayout from '@/components/forms/shared/FormLayout'
 
 export default async function NewWishlistPage() {
 

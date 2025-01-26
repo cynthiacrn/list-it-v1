@@ -8,6 +8,7 @@ import TextField from '@/components/forms/fields/TextField'
 import Button from '@/components/shared/Button'
 import { signInSchema } from '@/schemas/auth'
 import Link from "next/link"
+import { getSession } from 'next-auth/react'
 
 export default function SignInForm({ onSubmit }) {
   const router = useRouter()
@@ -20,6 +21,7 @@ export default function SignInForm({ onSubmit }) {
     try {
       await onSubmit?.(formValues)
       router.push("/wishlists")
+      await getSession()
     } catch (error) {
       form.setError('root.serverError', {
         message: "Invalid credentials",

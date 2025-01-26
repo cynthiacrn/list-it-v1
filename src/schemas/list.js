@@ -11,4 +11,5 @@ export const createListItemSchema = object({
   name: string().min(1, 'Name is required').max(100, 'Name is too long'),
   description: string().optional(),
   price: number().optional(),
+  image: string().optional(),
 })

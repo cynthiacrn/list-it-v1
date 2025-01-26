@@ -6,7 +6,7 @@ import { useForm } from '@/hooks/useForm'
 import FormControl from '@/components/forms/shared/FormControl'
 import TextField from '@/components/forms/fields/TextField'
 import Button from '@/components/shared/Button'
-import { createListItemSchema } from "@/schemas/list";
+import { createListItemSchema } from '@/schemas/list'
 
 export default function ListItemForm({ defaultValues = {}, onSubmit }) {
   const router = useRouter()
@@ -47,7 +47,6 @@ export default function ListItemForm({ defaultValues = {}, onSubmit }) {
             setValueAs: (value) => parseFloat(value).toFixed(2) || null,
           })} />
         </FormControl>
-
         <p className="text-xs text-atomic-tangerine">{form.getError("root.serverError")}</p>
       </div>
 

@@ -1,12 +1,12 @@
-import { prisma } from "@/lib/prisma";
-import { auth } from "@/lib/auth";
-import Link from "next/link";
+import { prisma } from '@/lib/prisma'
+import { auth } from '@/lib/auth'
+import Link from 'next/link'
 import Image from 'next/image'
 import coverImage2 from '../../../public/images/image-2.jpg'
-import ListsHeader from "@/components/layouts/ListsHeader";
+import ListsHeader from '@/components/layouts/ListsHeader'
 
 export default async function WishlistsPage() {
-  const session = await auth();
+  const session = await auth()
 
   const lists = await prisma.list.findMany({
     where: { userId: session.user.id },
@@ -35,7 +35,7 @@ export default async function WishlistsPage() {
         visibility: "PRIVATE",
       },
     }),
-  ]);
+  ])
 
   return (
     <div className="flex flex-col gap-12 pt-12">

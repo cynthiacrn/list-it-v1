@@ -1,9 +1,9 @@
-import NextAuth from "next-auth"
-import Credentials from "next-auth/providers/credentials"
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import { prisma } from "@/lib/prisma"
-import { signInSchema } from "@/schemas/auth"
-import { comparePasswords } from "@/utils/password"
+import NextAuth from 'next-auth'
+import Credentials from 'next-auth/providers/credentials'
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import { prisma } from '@/lib/prisma'
+import { signInSchema } from '@/schemas/auth'
+import { comparePasswords } from '@/utils/password'
 
 const isProduction = process.env.NODE_ENV === 'production'
 

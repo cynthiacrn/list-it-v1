@@ -27,6 +27,7 @@ model ListItem {
   name        String   @map("name")
   description String?  @map("description")
   price       Float?   @map("price")
+  image       String?  @map("image")
   listId      String   @map("list_id")
   list        List     @relation(fields: [listId], references: [id], onDelete: Cascade)
   createdAt   DateTime @default(now()) @map("created_at")

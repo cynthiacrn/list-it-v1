@@ -32,12 +32,12 @@ export default function Header() {
             </Link>
           </>
           ) : (
-            <div>
-              <Link href="/account/sign_in" className="cursor-pointer text-xs hover:text-mauve font-semibold uppercase py-3 px-4 w-full transition duration-300 ease-in-out">
-                sign in
+            <div className="flex flex-row gap-2">
+              <Link href="/account/sign_in" className="button button-outlined">
+                Login
               </Link>
-              <Link href="/account/sign_up" className="cursor-pointer text-xs bg-mauve border border-black hover:bg-black hover:text-snow font-semibold uppercase py-3 px-4 w-full transition duration-300 ease-in-out">
-                open a list
+              <Link href="/account/sign_up" className="button button-filled">
+                Register
               </Link>
             </div>
           )

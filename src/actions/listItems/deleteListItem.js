@@ -1,6 +1,6 @@
 "use server"
 
-import { auth } from "@/lib/auth"
+import { auth } from '@/lib/auth'
 
 export async function deleteListItem({ listSlug, itemSlug }) {
   const session = await auth()

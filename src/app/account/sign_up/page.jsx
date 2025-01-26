@@ -1,5 +1,5 @@
-import SignUpForm from "@/components/forms/SignUpForm"
-import { credentialSignUp } from "@/actions/auth/signUp"
+import SignUpForm from '@/components/forms/SignUpForm'
+import { credentialSignUp } from '@/actions/auth/signUp'
 
 export default function SignUpPage() {
   return (

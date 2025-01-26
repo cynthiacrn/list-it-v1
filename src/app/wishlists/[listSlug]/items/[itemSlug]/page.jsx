@@ -1,10 +1,9 @@
-import {prisma} from '@/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import Image from 'next/image'
 import coverImage1 from '../../../../../../public/images/image-1.jpg'
 import Link from 'next/link'
-import {deleteListItem} from "@/actions/listItems/deleteListItem";
-import DeleteListItemButton from "@/components/DeleteListItemButton";
-import {redirect} from "next/navigation";
+import DeleteListItemButton from '@/components/DeleteListItemButton'
+import { redirect } from 'next/navigation'
 
 function getDomain(url) {
   try {
@@ -20,7 +19,7 @@ function getDomain(url) {
 export default async function ItemPage({ params }) {
   const { listSlug } = await params
   const { itemSlug } = await params
-  
+
   const item = await prisma.listItem.findUnique({
     where: { slug: itemSlug },
     include: { list: true }

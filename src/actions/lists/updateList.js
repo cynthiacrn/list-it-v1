@@ -1,7 +1,7 @@
 "use server"
 
-import { auth } from "@/lib/auth"
-import slugify from "slugify"
+import { auth } from '@/lib/auth'
+import slugify from 'slugify'
 
 export async function updateList({ slug, name, description, visibility }) {
   const session = await auth()
